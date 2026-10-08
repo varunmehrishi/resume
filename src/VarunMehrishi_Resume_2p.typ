@@ -19,7 +19,7 @@ Software engineer with 7 years at Amazon building event-driven microservices and
 #skills(
   ("Architecture", "Event-driven microservices, asynchronous pipelines, idempotency and versioning contracts, optimistic locking, rate limiting, backward-compatible schema evolution, cost modelling"),
   ("Technical leadership", "System design ownership, decomposition and delegation to SDE1s, design and code review across six services, intern mentoring, cross-team alignment with partner engineering and product owners"),
-  ("Operations", "On-call and incident command, root-cause analysis, DLQ redrive and recovery tooling, Sev2 mitigation under change management, monitoring and alarm design, capacity and peak planning"),
+  ("Operations", "On-call and incident command, root-cause analysis, DLQ redrive and recovery tooling, Sev2 mitigation under change management, monitoring and alarm design, containerised deployments (Docker, ECR), capacity and peak planning"),
 )
 
 = Work Experience
@@ -42,7 +42,7 @@ Software engineer with 7 years at Amazon building event-driven microservices and
 - Built reusable alarm constructs in the shared CDK monitoring library and rolled DLQ alarms to four services; regionalized ticket de-duplication after a production learning.
 - Refactored Payment Authorization rule evaluation into generic applicability criteria and deciders so new payment laws became declarative additions instead of code forks.
 - Owned month-end close for auditing (Q3 2021 to Q3 2022): resolved *35 finance-critical tickets* with zero escalations, reconciling payment data with SQL and Python (pandas); during on-call reduced the open ticket backlog from 42 to 14 and drained a 1M-message resolution backlog using measured throughput.
-- Enriched the invoice-search UI across three data sources and onboarded India carriers with 189 GST translation codes and tax attributes; verified the EU launch of the invoice platform with same-day, log-driven root causes.
+- Enriched the invoice-search UI across three data sources and onboarded India carriers with 189 GST translation codes and tax attributes on the PostgreSQL-backed TIPS 1.0 invoice platform; verified the EU launch of the invoice platform with same-day, log-driven root causes.
 ]
 
 #line-entry[*Microsoft Consulting Services*, Associate Project Manager, Hyderabad][Jul 2019 – Nov 2019]
@@ -58,9 +58,9 @@ Software engineer with 7 years at Amazon building event-driven microservices and
 = Skills
 #skills(
   ("Languages", "Java, TypeScript, Scala, Python, Rust, SQL, Bash"),
-  ("AWS", "Lambda, SQS, SNS, DynamoDB, S3, Kinesis Data Firehose, Step Functions, EMR, RDS (MySQL, Aurora Serverless), API Gateway, CloudWatch, IAM, CDK v2, Athena, Redshift"),
-  ("Frameworks and tools", "REST APIs, Smithy and Coral service frameworks, Node.js (CDK and tooling), Guice, Dagger, MapStruct, jOOQ, JUnit, Mockito, Apache Spark, Elasticsearch, React, Vite, Git, CI/CD pipelines, MCP servers"),
-  ("Practices", "System design, REST API and database design (DynamoDB, MySQL), message queues (SQS, SNS, Kinesis), caching, event-driven architecture, idempotency, observability and alarming, load and regression testing, on-call and incident management, code review, mentoring"),
+  ("AWS", "Lambda, SQS, SNS, DynamoDB, S3, Kinesis Data Firehose, Step Functions, EMR, RDS (MySQL, PostgreSQL, Aurora Serverless), ECR, ECS, API Gateway, CloudWatch, IAM, CDK v2, Athena, Redshift"),
+  ("Frameworks and tools", "REST APIs, Docker, Smithy and Coral service frameworks, Node.js (CDK and tooling), Guice, Dagger, MapStruct, jOOQ, JUnit, Mockito, Apache Spark, Elasticsearch, React, Vite, Git, CI/CD pipelines, MCP servers"),
+  ("Practices", "System design, REST API and database design (DynamoDB, MySQL, PostgreSQL), message queues (SQS, SNS, Kinesis), caching, event-driven architecture, idempotency, observability and alarming, load and regression testing, on-call and incident management, code review, mentoring"),
 )
 
 = Education

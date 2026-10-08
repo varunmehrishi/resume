@@ -27,7 +27,7 @@ Software engineer with 7 years at Amazon building event-driven microservices and
 #entry("Software Development Engineer, Amazon (Transportation Financial Systems)", "Nov 2019 – Jun 2022")[
 - Authored TFS Helix, the dead-letter-queue platform (Java 11, jOOQ, Lambda, Multi-AZ MySQL with RDS Proxy, SQS, S3, CDK deployed through CI/CD pipelines) that prevents message loss, surfaces stack traces and redrives after fixes; adopted by *six teams* and still the shared platform in 2026.
 - Built shared CDK alarm constructs rolled to four services; made Payment Authorization rules declarative through generic applicability criteria and deciders.
-- Owned month-end close for auditing (2021 to 2022): resolved *35 finance-critical tickets* with zero escalations, reconciling payment data with SQL and Python; onboarded India carriers with 189 GST translation codes.
+- Owned month-end close for auditing (2021 to 2022): resolved *35 finance-critical tickets* with zero escalations, reconciling payment data with SQL and Python; onboarded India carriers with 189 GST translation codes on the PostgreSQL-backed TIPS 1.0 invoice platform.
 ]
 #line-entry[*Microsoft Consulting Services*, Associate Project Manager, Hyderabad][Jul 2019 – Nov 2019]
 
@@ -37,8 +37,8 @@ Software engineer with 7 years at Amazon building event-driven microservices and
 = Skills
 #skills(
   ("Languages", "Java, TypeScript, Scala, Python, Rust, SQL, Bash"),
-  ("AWS", "Lambda, SQS, SNS, DynamoDB, S3, Kinesis Data Firehose, Step Functions, EMR, RDS, API Gateway, CloudWatch, IAM, CDK v2, Athena, Redshift"),
-  ("Tools and practices", "REST APIs, Smithy, Guice, Dagger, jOOQ, JUnit, Apache Spark, Elasticsearch, Node.js, React, CI/CD; system design, database design (DynamoDB, MySQL), message queues (SQS, SNS, Kinesis), caching, event-driven architecture, idempotency, observability, load and regression testing, on-call and incident management, code review, mentoring"),
+  ("AWS", "Lambda, SQS, SNS, DynamoDB, S3, Kinesis Data Firehose, Step Functions, EMR, RDS (MySQL, PostgreSQL), ECR, API Gateway, CloudWatch, IAM, CDK v2, Athena, Redshift"),
+  ("Tools and practices", "REST APIs, Docker, Smithy, Guice, Dagger, jOOQ, JUnit, Apache Spark, Elasticsearch, Node.js, React, CI/CD; system design, database design (DynamoDB, MySQL, PostgreSQL), message queues (SQS, SNS, Kinesis), caching, event-driven architecture, idempotency, observability, load and regression testing, on-call and incident management, code review, mentoring"),
 )
 
 = Education
