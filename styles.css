@@ -1,0 +1,37 @@
+:root {
+  --bg: #f4f2ee; --panel: #ffffff; --ink: #1f2933; --muted: #5b6672; --line: #d9d4ca;
+  --accent: #1f2933; --accent-ink: #f5f1e8; --shadow: 0 1px 2px rgba(0,0,0,.08), 0 8px 24px rgba(0,0,0,.08);
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #15181c; --panel: #1e2328; --ink: #e8e6e1; --muted: #a3aab3; --line: #333a42; --accent: #e8e6e1; --accent-ink: #15181c; --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.5); }
+}
+* { box-sizing: border-box; }
+html { color-scheme: light dark; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+a { color: inherit; }
+.top { max-width: 900px; margin: 0 auto; padding: 32px 20px 16px; display: flex; flex-wrap: wrap; gap: 20px 32px; align-items: flex-end; justify-content: space-between; }
+h1 { margin: 0; font-size: 1.9rem; letter-spacing: .01em; }
+.tagline { margin: 4px 0 8px; color: var(--muted); max-width: 46ch; }
+.links { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: .95rem; }
+.controls { display: grid; gap: 10px; justify-items: end; }
+.toggle { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; padding: 3px; background: var(--panel); }
+.toggle button { border: 0; background: transparent; color: var(--ink); font: inherit; padding: 7px 16px; border-radius: 999px; cursor: pointer; }
+.toggle button[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); }
+.toggle button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.actions { display: flex; gap: 8px; }
+.button { display: inline-block; padding: 8px 14px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); text-decoration: none; font-size: .95rem; }
+.button.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.status { margin: 0; color: var(--muted); font-size: .9rem; min-height: 1.3em; }
+.pages { max-width: 900px; margin: 0 auto; padding: 8px 20px 40px; display: grid; gap: 24px; }
+.page { display: block; width: 100%; height: auto; aspect-ratio: 210 / 297; background: #fff; box-shadow: var(--shadow); border-radius: 2px; }
+.foot { max-width: 900px; margin: 0 auto; padding: 0 20px 40px; color: var(--muted); font-size: .85rem; }
+@media (max-width: 640px) {
+  .top { padding-top: 24px; align-items: flex-start; }
+  .controls { justify-items: start; }
+}
+@media print {
+  .top, .foot { display: none; }
+  body { background: #fff; }
+  .pages { padding: 0; gap: 0; }
+  .page { box-shadow: none; page-break-after: always; }
+}

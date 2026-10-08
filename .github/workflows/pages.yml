@@ -1,0 +1,36 @@
+# Optional: rebuild PDFs and SVG pages from src/*.typ on every push and publish to GitHub Pages.
+# Enable in the repo: Settings > Pages > Source: GitHub Actions. If you prefer "Deploy from a branch",
+# delete this file and commit the built pdf/ and pages/ folders instead.
+name: Build and deploy resume site
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: typst-community/setup-typst@v4
+        with:
+          typst-version: "0.15"
+      - run: python3 build.py
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

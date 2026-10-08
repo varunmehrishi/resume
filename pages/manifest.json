@@ -1,0 +1,17 @@
+{
+ "1p": {
+  "pdf": "pdf/Varun_Mehrishi_Resume_1_page.pdf",
+  "pages": [
+   "pages/1p-1.svg"
+  ],
+  "label": "One page"
+ },
+ "2p": {
+  "pdf": "pdf/Varun_Mehrishi_Resume_2_pages.pdf",
+  "pages": [
+   "pages/2p-1.svg",
+   "pages/2p-2.svg"
+  ],
+  "label": "Two pages"
+ }
+}
