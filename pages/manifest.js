@@ -1,1 +1,1 @@
-window.RESUME_MANIFEST = {"1p": {"pdf": "pdf/Varun_Mehrishi_Resume_1_page.pdf", "pages": ["pages/1p-1.svg"], "label": "One page"}, "2p": {"pdf": "pdf/Varun_Mehrishi_Resume_2_pages.pdf", "pages": ["pages/2p-1.svg", "pages/2p-2.svg"], "label": "Two pages"}};
+window.RESUME_MANIFEST = {"1p": {"pdf": "pdf/Varun_Mehrishi_Resume_1_page.pdf?v=6794b031a9", "pages": ["pages/1p-1.svg?v=f04a3b7cf1"], "label": "One page"}, "2p": {"pdf": "pdf/Varun_Mehrishi_Resume_2_pages.pdf?v=0e45a10bac", "pages": ["pages/2p-1.svg?v=943ecc1de9", "pages/2p-2.svg?v=3e313b94d4"], "label": "Two pages"}};

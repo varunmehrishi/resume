@@ -27,11 +27,12 @@
         img.className = "page";
         img.loading = i === 0 ? "eager" : "lazy";
         img.decoding = "async";
+        img.addEventListener("error", () => onImageError(img, variant), { once: true });
         return img;
       })
     );
     downloadEl.href = v.pdf;
-    downloadEl.download = v.pdf.split("/").pop();
+    downloadEl.download = v.pdf.split("/").pop().split("?")[0];
     printEl.href = v.pdf;
     statusEl.textContent = `Showing the ${v.label.toLowerCase()} version. Download gives you this same version as PDF.`;
     toggle.querySelectorAll("button").forEach((b) => {
@@ -43,6 +44,27 @@
     url.searchParams.set("v", variant);
     history.replaceState(null, "", url);
     document.title = `Varun Mehrishi, resume (${v.label.toLowerCase()})`;
+  }
+
+  // If a page image fails (stale cache, blocked SVG), retry once without the cache, then fall back to the PDF itself.
+  function onImageError(img, variant) {
+    if (!img.dataset.retried) {
+      img.dataset.retried = "1";
+      img.addEventListener("error", () => onImageError(img, variant), { once: true });
+      img.src = img.src.split("?")[0] + "?retry=" + Date.now();
+      return;
+    }
+    const v = manifest[variant];
+    const frame = document.createElement("object");
+    frame.type = "application/pdf";
+    frame.data = v.pdf;
+    frame.className = "page pdf-fallback";
+    frame.setAttribute("aria-label", "Resume PDF");
+    const note = document.createElement("p");
+    note.className = "status";
+    note.innerHTML = `The page preview could not be loaded in this browser. <a href="${v.pdf}">Open the ${v.label.toLowerCase()} PDF</a> instead.`;
+    frame.append(note.cloneNode(true));
+    pagesEl.replaceChildren(note, frame);
   }
 
   function preload(variant) {

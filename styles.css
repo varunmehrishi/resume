@@ -24,13 +24,15 @@ h1 { margin: 0; font-size: 1.9rem; letter-spacing: .01em; }
 .status { margin: 0; color: var(--muted); font-size: .9rem; min-height: 1.3em; }
 .pages { max-width: 900px; margin: 0 auto; padding: 8px 20px 40px; display: grid; gap: 24px; }
 .page { display: block; width: 100%; height: auto; aspect-ratio: 210 / 297; background: #fff; box-shadow: var(--shadow); border-radius: 2px; }
+.pdf-fallback { min-height: 80vh; }
 .foot { max-width: 900px; margin: 0 auto; padding: 0 20px 40px; color: var(--muted); font-size: .85rem; }
 @media (max-width: 640px) {
   .top { padding-top: 24px; align-items: flex-start; }
   .controls { justify-items: start; }
 }
 @media print {
-  .top, .foot { display: none; }
+  .top, .pdf-fallback { min-height: 80vh; }
+.foot { display: none; }
   body { background: #fff; }
   .pages { padding: 0; gap: 0; }
   .page { box-shadow: none; page-break-after: always; }

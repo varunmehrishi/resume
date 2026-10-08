@@ -27,7 +27,7 @@ The site then lives at `https://varunmehrishi.github.io/resume/`. Deep links: `?
 ## Updating the resume
 Edit the files in `src/`, run `python3 build.py`, commit. Keep `src/` in sync with `persona/resume/*.typ` if you edit there.
 
-Contact details: the site builds with the Typst input `web=1`, which removes email and phone from the resume header; LinkedIn and GitHub remain. The application PDFs built without that input keep full contact details.
+Contact details: the site PDFs include email and phone (ATS checkers cap the score without them). Set `TYPST_WEB=1` when running `build.py` to produce a header with only location, LinkedIn and GitHub.
 
 ## Licence
 Code (`template.typ`, `build.py`, `index.html`, `styles.css`, `app.js`, `.github/`) is MIT licensed. The resume content (`src/VarunMehrishi_Resume_*.typ`, `pdf/`, `pages/`) is copyright Varun Mehrishi, all rights reserved. See `LICENSE`.

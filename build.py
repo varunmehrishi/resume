@@ -2,11 +2,11 @@
 """Build the resume site assets from the Typst sources in src/.
 
 Outputs: pdf/<name>.pdf, pages/<variant>-<n>.svg, pages/manifest.json.
-Builds with the Typst input web=1, which drops email and phone from the header (LinkedIn is the contact channel).
+Builds with full contact details. Pass TYPST_WEB=1 to drop email and phone from the header.
 Uses the `typst` CLI when present, otherwise the `typst` Python package
 (set TYPST_PY_LIB to a directory containing the extracted wheel if it is not installed).
 """
-import json, os, shutil, subprocess, sys
+import hashlib, json, os, shutil, subprocess, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 SRC, PDF, PAGES = (os.path.join(HERE, d) for d in ("src", "pdf", "pages"))
@@ -15,8 +15,11 @@ VARIANTS = {"1p": "VarunMehrishi_Resume_1p", "2p": "VarunMehrishi_Resume_2p"}
 PUBLIC_NAMES = {"1p": "Varun_Mehrishi_Resume_1_page.pdf", "2p": "Varun_Mehrishi_Resume_2_pages.pdf"}
 
 
+WEB = os.environ.get("TYPST_WEB", "0")
+
+
 def compile_cli(src, fmt, out):
-    subprocess.run(["typst", "compile", "--root", SRC, "--input", "web=1", "--format", fmt, src, out], check=True)
+    subprocess.run(["typst", "compile", "--root", SRC, "--input", f"web={WEB}", "--format", fmt, src, out], check=True)
 
 
 def compile_py(src, fmt):
@@ -24,7 +27,7 @@ def compile_py(src, fmt):
     if lib:
         sys.path.insert(0, lib)
     import typst  # noqa: E402
-    result = typst.compile(src, root=SRC, format=fmt, sys_inputs={"web": "1"})
+    result = typst.compile(src, root=SRC, format=fmt, sys_inputs={"web": WEB})
     return result if isinstance(result, list) else [result]
 
 
@@ -49,7 +52,9 @@ def main():
                 fn = f"{key}-{i}.svg"
                 open(os.path.join(PAGES, fn), "wb").write(data)
                 pages.append(fn)
-        manifest[key] = {"pdf": f"pdf/{PUBLIC_NAMES[key]}", "pages": [f"pages/{p}" for p in pages],
+        def ver(rel):  # content hash so redeploys never serve a stale cached asset
+            return rel + "?v=" + hashlib.sha1(open(os.path.join(HERE, rel), "rb").read()).hexdigest()[:10]
+        manifest[key] = {"pdf": ver(f"pdf/{PUBLIC_NAMES[key]}"), "pages": [ver(f"pages/{p}") for p in pages],
                          "label": "One page" if key == "1p" else "Two pages"}
         print(f"{key}: {len(pages)} page(s), pdf {os.path.getsize(pdf_out)} bytes")
     json.dump(manifest, open(os.path.join(PAGES, "manifest.json"), "w"), indent=1)
